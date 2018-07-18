@@ -1,5 +1,6 @@
+-- table of flow items , and timestamp
 create table SFLOW (
- ts bigint not null,
+ ts TIMESTAMP DEFAULT NOW not null,
  agent varchar(64) not null,
  inport integer not null,
  outport integer not null,
@@ -11,4 +12,6 @@ create table SFLOW (
  tcp_flags integer not null,
  packet_size integer not null,
  ip_size integer not null,
- sampling_rate integer not null);
+ sampling_rate integer not null) USING TTL 10 MINUTES ON COLUMN ts;
+-- need to use TTL
+create index idx_sflow_ts on SFLOW (ts);

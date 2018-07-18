@@ -39,7 +39,7 @@ func main() {
         if ! strings.HasPrefix(line, "FLOW") {
             continue
         }
-        millis := time.Now().UnixNano() / 1000000
+        microsec := time.Now().UnixNano() / 1000
 
         // see line-by-line csv output format
         // https://github.com/sflow/sflowtool
@@ -64,7 +64,7 @@ func main() {
         rate, _ := strconv.ParseInt(items[19], 10, 32)
 
         conn.ExecAsync(resCons, "SFLOW.insert",
-               []driver.Value{ millis, agent, inind, outind,
+               []driver.Value{ microsec, agent, inind, outind,
                                srcip, dstip, ipprotocol, tcpflags,
                                srcport, dstport, pktsz, ipsz, rate })
         }
