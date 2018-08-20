@@ -6,7 +6,7 @@ create table SFLOW (
  outport integer not null,
  srcip varchar(64) not null,
  dstip varchar(64) not null,
- ipprocotol integer not null,
+ ipprotocol integer not null,
  srcport integer not null,
  dstport integer not null,
  tcp_flags integer not null,
