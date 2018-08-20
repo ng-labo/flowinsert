@@ -67,8 +67,8 @@ func main() {
                []driver.Value{ microsec, agent, inind, outind,
                                srcip, dstip, ipprotocol, tcpflags,
                                srcport, dstport, pktsz, ipsz, rate })
-        }
-        cmd.Wait()
+    }
+    cmd.Wait()
 
 }
 
